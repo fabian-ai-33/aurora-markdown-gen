@@ -53,11 +53,9 @@ def save_files_as_markdown(file_list, output_markdown_name, base_dir):
 
     output_markdown = os.path.join(output_dir, output_markdown_name)
 
-    project_id = input("🆔 ReactProject ID: ").strip()
-
+    print("📝 Enter a short message for each file that will show before the file. Something like 'Now, let's create the layout component'")
     try:
         with open(output_markdown, 'w', encoding='utf-8') as out_file:
-            out_file.write(f'<ReactProject id="{project_id}">\n\n')
 
             for filename in file_list:
                 try:
@@ -68,7 +66,7 @@ def save_files_as_markdown(file_list, output_markdown_name, base_dir):
                     
                     description = ""
                     while not description:
-                        description = input("📝 Enter a short description for this file (required): ").strip()
+                        description = input("📝 The short message (required):").strip()
                         if not description:
                             print("❗ Description cannot be empty. Please try again.")
 
@@ -85,7 +83,6 @@ def save_files_as_markdown(file_list, output_markdown_name, base_dir):
                 except Exception as e:
                     print(f"⚠️  Warning: Could not read {filename}: {e}")
 
-            out_file.write('</ReactProject>\n')
 
         print(f"\n✅ Output saved to '{output_markdown}'")
 
@@ -103,7 +100,13 @@ def main():
     ]
     ignored_files = [
         'next-env.d.ts',
-        'next.config.ts'
+        'next.config.ts',
+        'tailwind.config.ts',
+        'postcss.config.ts',
+        'tsconfig.json',
+        'tsconfig.node.json',
+        'tsconfig.app.json',
+        'tsconfig.json',
     ]
 
     print("📦 Please provide the following:")
