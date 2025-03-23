@@ -96,7 +96,11 @@ def save_files_as_markdown(file_list, output_markdown_name, base_dir):
 def main():
     # Configuration
     file_patterns = ['*.ts', '*.tsx']
-    ignored_directories = ['node_modules', 'dist']
+    ignored_directories = [
+        'node_modules', 
+        'dist',
+        'components/ui',
+    ]
     ignored_files = [
         'next-env.d.ts',
         'next.config.ts'
